@@ -8,7 +8,6 @@
 
 #include <stdio.h>
 #include <math.h>
-#include <string.h>
 #define Pi 3.14
 void CIRCLE_PROPERTIES(double Radius);
 void RECTANGLE_PROPERTIES(double L, double W);

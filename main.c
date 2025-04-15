@@ -46,9 +46,9 @@ int main()
 
         case 3:
         printf("Enter the length:\t");
-        scanf("%lf", L);
+        scanf("%lf", &L);
         printf("Enter the width:\t");
-        scanf("%lf", W);
+        scanf("%lf", &W);
         RECTANGLE_PROPERTIES(L, W);
         break;
 
@@ -76,11 +76,11 @@ void CIRCLE_PROPERTIES(double Radius)
     switch(propertyCmd)
     {
         case 1:
-        printf("The area of the circle is %.2lf\n", area);
+        printf("The area of the circle is %.3lf\n", area);
         break;
 
         case 2:
-        printf("The circumference of the circle is %.2lf\n", circumference);
+        printf("The circumference of the circle is %.3lf\n", circumference);
         break;
 
         default:
@@ -103,11 +103,11 @@ void SQUARE_PROPERTIES(double S){
     switch (propertyCmd)
     {
     case 1:
-        printf("The area of the square is %.2lf\n", area);
+        printf("The area of the square is %.3lf\n", area);
         break;
 
     case 2:
-    printf("The perimeter of the square is  %.2lf\n", perimeter);
+    printf("The perimeter of the square is  %.3lf\n", perimeter);
         break;
 
     default:
@@ -131,11 +131,11 @@ void RECTANGLE_PROPERTIES(double L, double W){
     switch (propertyCmd)
     {
     case 1:
-        printf("The area of the rectangle is %.2lf\n", area);
+        printf("The area of the rectangle is %.3lf\n", area);
         break;
 
     case 2:
-    printf("The perimeter of the rectangle is  %.2lfn", perimeter);
+    printf("The perimeter of the rectangle is  %.3lf", perimeter);
         break;
 
     default:

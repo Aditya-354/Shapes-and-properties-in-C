@@ -12,28 +12,28 @@
 
 #define Pi 3.14
 
-void CIRCLE_PROPERTIES(double Radius);
-void RECTANGLE_PROPERTIES(double L, double W);
-void SQUARE_PROPERTIES(double S);
+void CIRCLE_PROPERTIES(double Radius);                            // circle function prototype
+void RECTANGLE_PROPERTIES(double L, double W);                    // rectangle function prototype
+void SQUARE_PROPERTIES(double S);                                 // square function prototype
 
-void CIRCLE_PROPERTIES(double Radius)
+void CIRCLE_PROPERTIES(double Radius)                             // circle function definition
 {
     char propertyCmd[100];
     double area, circumference;
     char are[] = "area";
-    char circum[] = "circumference"; // Fixed spelling
+    char circum[] = "circumference"; 
 
     printf("Enter 'area' to calculate the area\nEnter 'circumference' to calculate the circumference.\n");
-    scanf(" %[^\n]%*c", propertyCmd); // Added space before %[^\n] to consume leftover newline
+    scanf(" %[^\n]%*c", propertyCmd);                              
 
     int Area = strcmp(propertyCmd, are);
     int Circum = strcmp(propertyCmd, circum);
     area = Pi * pow(Radius, 2);
     circumference = 2 * Pi * Radius;
 
-    if (Area == 0)
+    if (Area == 0)                                                 
     {
-        printf("The area of the circle is %.3lf\n", area);
+        printf("The area of the circle is %.3lf\n", area);                          
     }
     else if (Circum == 0)
     {
@@ -45,7 +45,7 @@ void CIRCLE_PROPERTIES(double Radius)
     }
 }
 
-void SQUARE_PROPERTIES(double S)
+void SQUARE_PROPERTIES(double S)                                   // square function definition
 {
     char propertyCmd[100];
     double area, perimeter;
@@ -70,7 +70,7 @@ void SQUARE_PROPERTIES(double S)
     }
 }
 
-void RECTANGLE_PROPERTIES(double L, double W)
+void RECTANGLE_PROPERTIES(double L, double W)                       // rectangle function definition
 {
     int propertyCmd;
     double area, perimeter;
@@ -95,7 +95,7 @@ void RECTANGLE_PROPERTIES(double L, double W)
     }
 }
 
-int main()
+int main()                                                          // MAIN FUNCTION
 {
     char circle[] = "circle";
     char rectangle[] = "rectangle";
@@ -113,19 +113,19 @@ int main()
     int SQUARE = strcmp(MainCmd, square);
     int RECTANGLE = strcmp(MainCmd, rectangle);
 
-    if (CIRCLE == 0)
+    if (CIRCLE == 0)                                                // circle function call
     {
         printf("Enter the radius of the circle:\t");
         scanf("%lf", &Radius); // Fixed: added &
         CIRCLE_PROPERTIES(Radius);
     }
-    else if (SQUARE == 0)
+    else if (SQUARE == 0)                                           // square function call
     {
         printf("Enter the side length of the square:\t");
         scanf("%lf", &L); // Fixed: added &
         SQUARE_PROPERTIES(L);
     }
-    else if (RECTANGLE == 0)
+    else if (RECTANGLE == 0)                                        // rectangle function call
     {
         printf("Enter the length and width of the rectangle:\n");
         scanf("%lf %lf", &L, &W); // Fixed: added &

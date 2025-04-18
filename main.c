@@ -2,7 +2,6 @@
  * AUTHOR: Aditya Swamy
  * Date: Tuesday, 15th April, 2025.
  * Program to find area and parameters, and other properties of circle, triangle, square, rectangle, etc.
- * New features for calculating area, perimeters, volume, and other properties for many other shapes will be
  * added in the future.
  */
 

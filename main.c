@@ -2,137 +2,146 @@
  * AUTHOR: Aditya Swamy
  * Date: Tuesday, 15th April, 2025.
  * Program to find area and parameters, and other properties of circle, triangle, square, rectangle, etc.
- * added in the future.
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include <string.h>
 
 #define Pi 3.14
 
-void CIRCLE_PROPERTIES(double Radius);                            // circle function prototype
-void RECTANGLE_PROPERTIES(double L, double W);                    // rectangle function prototype
-void SQUARE_PROPERTIES(double S);                                 // square function prototype
+void clearScreen()
+{
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
 
-void CIRCLE_PROPERTIES(double Radius)                             // circle function definition
+void CIRCLE_PROPERTIES(double Radius)
 {
     char propertyCmd[100];
-    double area, circumference;
-    char are[] = "area";
-    char circum[] = "circumference"; 
+    double area = Pi * pow(Radius, 2);
+    double circumference = 2 * Pi * Radius;
 
     printf("Enter 'area' to calculate the area\nEnter 'circumference' to calculate the circumference.\n");
-    scanf(" %[^\n]%*c", propertyCmd);                              
+    scanf(" %[^\n]%*c", propertyCmd);
 
-    int Area = strcmp(propertyCmd, are);
-    int Circum = strcmp(propertyCmd, circum);
-    area = Pi * pow(Radius, 2);
-    circumference = 2 * Pi * Radius;
-
-    if (Area == 0)                                                 
+    if (strcmp(propertyCmd, "area") == 0)
     {
-        printf("The area of the circle is %.3lf\n", area);                          
+        printf("The area of the circle is %.3lf\n", area);
     }
-    else if (Circum == 0)
+    else if (strcmp(propertyCmd, "circumference") == 0)
     {
         printf("The circumference of the circle is %.3lf\n", circumference);
     }
     else
     {
-        printf("COMMAND ERROR!\n");
+        printf("COMMAND UNKNOWN !\n");
     }
 }
 
-void SQUARE_PROPERTIES(double S)                                   // square function definition
+void SQUARE_PROPERTIES(double S)
 {
     char propertyCmd[100];
-    double area, perimeter;
-    char are[] = "area";
-    char peri[] = "perimeter";
+    double area = pow(S, 2);
+    double perimeter = 4 * S;
+
     printf("Enter 'area' to calculate the area\nEnter 'perimeter' to calculate the perimeter.\n");
     scanf(" %[^\n]%*c", propertyCmd);
 
-    int Area = strcmp(propertyCmd, are);
-    int Perimeter = strcmp(propertyCmd, peri);
-
-    area = pow(S, 2);
-    perimeter = 4 * S;
-
-    if (Area == 0)
+    if (strcmp(propertyCmd, "area") == 0)
     {
         printf("The area of the square is %.3lf\n", area);
     }
-    else if (Perimeter == 0)
+    else if (strcmp(propertyCmd, "perimeter") == 0)
     {
         printf("The perimeter of the square is %.3lf\n", perimeter);
     }
+    else
+    {
+        printf("COMMAND UNKNOWN !\n");
+    }
 }
 
-void RECTANGLE_PROPERTIES(double L, double W)                       // rectangle function definition
+void RECTANGLE_PROPERTIES(double L, double W)
 {
-    int propertyCmd;
-    double area, perimeter;
+    char propertyCmd[100];
+    double area = L * W;
+    double perimeter = 2 * (L + W);
 
-    printf("Enter '1' to calculate the area\nEnter '2' to calculate the perimeter.\n");
-    scanf("%d", &propertyCmd);
+    printf("Enter 'area' to calculate the area\nEnter 'perimeter' to calculate the perimeter.\n");
+    scanf(" %[^\n]%*c", propertyCmd);
 
-    area = L * W;
-    perimeter = 2 * (L + W);
-
-    switch (propertyCmd)
+    if (strcmp(propertyCmd, "area") == 0)
     {
-    case 1:
         printf("The area of the rectangle is %.3lf\n", area);
-        break;
-    case 2:
+    }
+    else if (strcmp(propertyCmd, "perimeter") == 0)
+    {
         printf("The perimeter of the rectangle is %.3lf\n", perimeter);
-        break;
-    default:
-        printf("COMMAND UNKNOWN!\n");
-        break;
-    }
-}
-
-int main()                                                          // MAIN FUNCTION
-{
-    char circle[] = "circle";
-    char rectangle[] = "rectangle";
-    char square[] = "square";
-    char MainCmd[100];
-    double L, W, Radius;
-
-    printf("Enter 'circle' to calculate the properties of a circle.\n");
-    printf("Enter 'square' to calculate the properties of a square.\n");
-    printf("Enter 'rectangle' to calculate the properties of a rectangle.\n");
-    printf("\nNOTE: The input command is case-sensitive. Please use lowercase letters only.\n");
-    scanf(" %[^\n]%*c", MainCmd); // Fixed: removed & and added space
-
-    int CIRCLE = strcmp(MainCmd, circle);
-    int SQUARE = strcmp(MainCmd, square);
-    int RECTANGLE = strcmp(MainCmd, rectangle);
-
-    if (CIRCLE == 0)                                                // circle function call
-    {
-        printf("Enter the radius of the circle:\t");
-        scanf("%lf", &Radius); // Fixed: added &
-        CIRCLE_PROPERTIES(Radius);
-    }
-    else if (SQUARE == 0)                                           // square function call
-    {
-        printf("Enter the side length of the square:\t");
-        scanf("%lf", &L); // Fixed: added &
-        SQUARE_PROPERTIES(L);
-    }
-    else if (RECTANGLE == 0)                                        // rectangle function call
-    {
-        printf("Enter the length and width of the rectangle:\n");
-        scanf("%lf %lf", &L, &W); // Fixed: added &
-        RECTANGLE_PROPERTIES(L, W);
     }
     else
     {
-        printf("COMMAND ERROR!\n");
+        printf("COMMAND UNKNOWN !\n");
+    }
+}
+
+int main()
+{
+    char MainCmd[100];
+    double L, W, Radius;
+
+    while (1)
+    {
+        printf("\n==============================\n");
+        printf("Enter 'circle' to calculate the properties of a circle.\n");
+        printf("Enter 'square' to calculate the properties of a square.\n");
+        printf("Enter 'rectangle' to calculate the properties of a rectangle.\n");
+        printf("Enter 'terminate' to finish the calculation\n");
+        printf("\nNOTE: The input command is case-sensitive. Please use lowercase letters only.\n");
+        printf("==============================\n");
+        printf("Your choice: ");
+        scanf(" %[^\n]%*c", MainCmd);
+
+        if (strcmp(MainCmd, "terminate") == 0)
+        {
+            clearScreen(); // Clear screen on exit
+            printf("Program terminated. All calculations cleared.\n");
+            break;
+        }
+
+        clearScreen(); // Clear screen before showing new calculation section
+
+        if (strcmp(MainCmd, "circle") == 0)
+        {
+            printf("Enter the radius of the circle:\t");
+            scanf("%lf", &Radius);
+            CIRCLE_PROPERTIES(Radius);
+        }
+        else if (strcmp(MainCmd, "square") == 0)
+        {
+            printf("Enter the side length of the square:\t");
+            scanf("%lf", &L);
+            SQUARE_PROPERTIES(L);
+        }
+        else if (strcmp(MainCmd, "rectangle") == 0)
+        {
+            printf("Enter the length and width of the rectangle:\n");
+            scanf("%lf %lf", &L, &W);
+            RECTANGLE_PROPERTIES(L, W);
+        }
+        else
+        {
+            printf("COMMAND ERROR!\n");
+        }
+
+        printf("\nPress Enter to continue...");
+        getchar();
+        getchar(); // Wait for user before next screen
+        clearScreen();
     }
 
     return 0;
